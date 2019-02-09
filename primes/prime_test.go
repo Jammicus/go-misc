@@ -33,6 +33,13 @@ func TestIsPrime(t *testing.T) {
 		if item := isPrime(*num); item != test.prime {
 			t.Errorf("isPrime(%v) = %v", test.number, item)
 		}
+	}
+}
 
+func BenchmarkIsItPrime(b *testing.B) {
+
+	for n := 0; n < b.N; n++ {
+		i := big.NewInt(int64(n))
+		isPrime(*i)
 	}
 }
